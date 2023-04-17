@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Box, Button } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
+import GroupIcon from '@mui/icons-material/Group';
 import { selectIsLoggedIn } from 'redux/auth';
 
 export const Navigation = () => {
@@ -31,6 +32,7 @@ export const Navigation = () => {
           to="/contacts"
           variant="contained"
           size="medium"
+          startIcon={<GroupIcon />}
         >
           Contacts
         </Button>
