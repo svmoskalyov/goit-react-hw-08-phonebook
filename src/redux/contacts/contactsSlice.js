@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addContact, getContact, removeContact } from './contactsOperations';
+import { addContact, getContact, deleteContact } from './contactsOperations';
+import { logOut } from 'redux/auth';
 
 const contactsInitialState = {
   items: [],
@@ -12,23 +13,28 @@ const contactsSlice = createSlice({
   initialState: contactsInitialState,
   extraReducers: builder => {
     builder
-      .addCase(addContact.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items.push(payload);
-      })
       .addCase(getContact.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
         state.items = payload;
       })
-      .addCase(removeContact.fulfilled, (state, { payload }) => {
+      .addCase(addContact.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items.push(payload);
+      })
+      .addCase(deleteContact.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
         state.items = state.items.filter(el => el.id !== payload);
       })
+      .addCase(logOut.fulfilled, () => {
+        return contactsInitialState;
+      })
       .addMatcher(
-        action => action.type.endsWith('/pending'),
+        action =>
+          action.type.startsWith('contacts') &&
+          action.type.endsWith('/pending'),
         state => {
           state.isLoading = true;
         }

@@ -1,34 +1,23 @@
-import { useDispatch } from 'react-redux';
-import { filters } from 'redux/filtersSlice';
-import PropTypes from 'prop-types';
-import { Label, Input } from './Filter.styled';
+import { TextField } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFilter, setFilter } from 'redux/filter';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(filters(e.target.value));
-  };
+  const filter = useSelector(selectFilter);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Label>
-        Find contacts by name
-        <Input
-          type="text"
-          name="filter"
-          onChange={handleSubmit}
-          title="Name may contain only letters, apostrophe, dash and spaces. For
-        example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        />
-      </Label>
-    </form>
+    <TextField
+      required
+      autoComplete="off"
+      name="filter"
+      fullWidth
+      id="filter"
+      label="Filter"
+      type="text"
+      size="small"
+      onChange={e => dispatch(setFilter(e.target.value))}
+      value={filter}
+    />
   );
-};
-
-Filter.propTypes = {
-  value: PropTypes.string,
-  onChange: PropTypes.func,
 };

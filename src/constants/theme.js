@@ -1,4 +1,25 @@
-export const theme = {
+import { createTheme } from '@mui/material/styles';
+
+export const theme = createTheme({
+  palette: {
+    common: {
+      black: '#000',
+      white: '#fff',
+    },
+    primary: {
+      main: '#2196f3',
+    },
+    secondary: {
+      main: '#2979ff',
+    },
+    accent: {
+      main: '#651fff',
+    },
+  },
+  typography: {
+    fontFamily: 'Raleway, Arial',
+    fontSize: 14,
+  },
   colors: {
     black: '#000',
     white: '#fff',
@@ -25,7 +46,7 @@ export const theme = {
     xl: '64px',
   },
   fontWeights: {
-    normal: 500,
+    normal: 400,
     bold: 700,
   },
   lineHeights: {
@@ -38,7 +59,10 @@ export const theme = {
   },
   radii: {
     none: '0',
-    normal: '4px',
+    sm: '4px',
+    md: '8px',
+    lg: '16px',
     round: '50%',
   },
-};
+});
+

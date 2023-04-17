@@ -1,27 +1,26 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { ImUserPlus } from 'react-icons/im';
-import { Button } from 'components';
-import { addContact } from 'redux/contactsOperations';
-import { Forma, Label, Input } from './ContactForm.styled';
+import { Box, Button, TextField } from '@mui/material';
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import { addContact } from 'redux/contacts';
 
 const nameRegex = RegExp(
   /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/
 );
-const phoneRegex = RegExp(
+const numberRegex = RegExp(
   /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/
 );
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string().matches(nameRegex, 'Invalid name').required(),
-  phone: Yup.string().matches(phoneRegex, 'Invalid phone').required(),
+  number: Yup.string().matches(numberRegex, 'Invalid number').required(),
 });
 
 const initialValues = {
   name: '',
-  phone: '',
+  number: '',
 };
 
 export const ContactForm = () => {
@@ -38,39 +37,57 @@ export const ContactForm = () => {
       validationSchema={SignupSchema}
       onSubmit={handleSubmit}
     >
-      <Forma>
-        <Label>
-          Name
-          <Input
-            type="text"
-            name="name"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-            placeholder="Your name"
-          />
-          <ErrorMessage name="name">
-            {msg => <div style={{ color: 'red' }}>{msg}</div>}
-          </ErrorMessage>
-        </Label>
+      <Box
+        as={Form}
+        sx={{
+          display: 'grid',
+          justifyItems: 'center',
+          gap: '15px',
+          width: 330,
+          borderRadius: 4,
+        }}
+      >
+        <Field
+          as={TextField}
+          autoComplete="given-name"
+          name="name"
+          required
+          fullWidth
+          id="name"
+          label="Name"
+          type="text"
+          size="small"
+        />
 
-        <Label>
-          Number
-          <Input
-            type="tel"
-            name="phone"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-            placeholder="000-00-00"
-          />
-          <ErrorMessage name="phone">
-            {msg => <div style={{ color: 'red' }}>{msg}</div>}
-          </ErrorMessage>
-        </Label>
+        <ErrorMessage name="name">
+          {msg => <div style={{ color: 'red' }}>{msg}</div>}
+        </ErrorMessage>
 
-        <Button type="submit" icon={ImUserPlus} aria-label="Add contact">
+        <Field
+          as={TextField}
+          autoComplete="on"
+          name="number"
+          required
+          fullWidth
+          id="number"
+          label="Number"
+          type="text"
+          size="small"
+        />
+
+        <ErrorMessage name="number">
+          {msg => <div style={{ color: 'red' }}>{msg}</div>}
+        </ErrorMessage>
+
+        <Button
+          type="submit"
+          variant="contained"
+          size="medium"
+          startIcon={<PersonAddAlt1Icon />}
+        >
           Add contact
         </Button>
-      </Forma>
+      </Box>
     </Formik>
   );
 };
