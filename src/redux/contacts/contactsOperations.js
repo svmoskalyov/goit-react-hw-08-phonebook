@@ -39,8 +39,10 @@ export const addContact = createAsyncThunk(
   {
     condition: (state, { getState }) => {
       const { items } = getState().contacts;
-      const findContact = items.find(cont => cont.name === state.name);
       const findNumber = items.find(num => num.number === state.number);
+      const findContact = items.find(
+        cont => cont.name.toLowerCase() === state.name.toLowerCase()
+      );
 
       if (findContact) {
         alert(`${state.name} is already in contacts`);
