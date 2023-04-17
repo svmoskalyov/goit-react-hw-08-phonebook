@@ -7,6 +7,7 @@ export const theme = createTheme({
       white: '#fff',
     },
     primary: {
+      light: '#1976d2',
       main: '#2196f3',
     },
     secondary: {
@@ -65,4 +66,3 @@ export const theme = createTheme({
     round: '50%',
   },
 });
-

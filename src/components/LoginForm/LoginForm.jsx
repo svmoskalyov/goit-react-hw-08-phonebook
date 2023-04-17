@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { Box, Button, TextField } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import { logIn } from 'redux/auth';
+import { ButtonStyle } from 'components';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -52,14 +53,12 @@ export const LoginForm = () => {
         size="small"
       />
 
-      <Button
+      <ButtonStyle
         type="submit"
-        variant="contained"
-        size="medium"
         startIcon={<LoginIcon />}
       >
         Log In
-      </Button>
+      </ButtonStyle>
     </Box>
   );
 };

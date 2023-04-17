@@ -12,7 +12,7 @@ const HomePage = () => {
         pt: '50px',
       }}
     >
-      <Typography component="h1" variant="h2">
+      <Typography component="h1" variant="h2" fontStyle="italic" sx={{ p: 4 }}>
         Welcome to phonebook
       </Typography>
 
@@ -25,7 +25,7 @@ const HomePage = () => {
           height: 500,
           width: 700,
           borderRadius: 2,
-          boxShadow: 3,
+          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
         }}
       ></Box>
     </Box>

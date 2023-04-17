@@ -10,3 +10,4 @@ export * from './RegisterForm/RegisterForm';
 export * from './ContactForm/ContactForm';
 export * from './ContactsList/ContactsList';
 export * from './Filter/Filter';
+export * from './ButtonStyle/ButtonStyle';

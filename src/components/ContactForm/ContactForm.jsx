@@ -2,9 +2,10 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Formik, ErrorMessage, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { Box, Button, TextField } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import { addContact } from 'redux/contacts';
+import { ButtonStyle } from 'components';
 
 const nameRegex = RegExp(
   /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/
@@ -79,14 +80,12 @@ export const ContactForm = () => {
           {msg => <div style={{ color: 'red' }}>{msg}</div>}
         </ErrorMessage>
 
-        <Button
+        <ButtonStyle
           type="submit"
-          variant="contained"
-          size="medium"
           startIcon={<PersonAddAlt1Icon />}
         >
           Add contact
-        </Button>
+        </ButtonStyle>
       </Box>
     </Formik>
   );

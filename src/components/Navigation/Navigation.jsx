@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import GroupIcon from '@mui/icons-material/Group';
 import { selectIsLoggedIn } from 'redux/auth';
+import { ButtonStyle } from 'components';
 
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -16,26 +17,18 @@ export const Navigation = () => {
         gap: '10px',
       }}
     >
-      <Button
-        component={NavLink}
-        to="/"
-        variant="contained"
-        size="medium"
-        startIcon={<HomeIcon />}
-      >
+      <ButtonStyle component={NavLink} to="/" startIcon={<HomeIcon />}>
         Home
-      </Button>
+      </ButtonStyle>
 
       {isLoggedIn && (
-        <Button
+        <ButtonStyle
           component={NavLink}
           to="/contacts"
-          variant="contained"
-          size="medium"
           startIcon={<GroupIcon />}
         >
           Contacts
-        </Button>
+        </ButtonStyle>
       )}
     </Box>
   );

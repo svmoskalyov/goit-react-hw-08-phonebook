@@ -12,7 +12,7 @@ const LoginPage = () => {
         gap: '20px',
         mx: 'auto',
         borderRadius: 4,
-        boxShadow: 3,
+        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
         backgroundColor: '#f6f8f9',
       }}
     >

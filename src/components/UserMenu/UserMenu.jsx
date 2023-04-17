@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { logOut, selectUser } from 'redux/auth';
+import { ButtonStyle } from 'components';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -19,16 +20,13 @@ export const UserMenu = () => {
         {user.name}
       </Typography>
 
-      <Button
+      <ButtonStyle
         type="button"
-        variant="contained"
-        size="medium"
-        sx={{ width: 100 }}
         onClick={() => dispatch(logOut())}
         startIcon={<LogoutIcon />}
       >
         Logout
-      </Button>
+      </ButtonStyle>
     </Box>
   );
 };

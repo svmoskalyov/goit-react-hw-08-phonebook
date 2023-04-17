@@ -1,30 +1,23 @@
 import { NavLink } from 'react-router-dom';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import { ButtonStyle } from 'components';
 
 export const AuthNav = () => {
   return (
     <Box sx={{ display: 'flex', gap: '8px' }}>
-      <Button
+      <ButtonStyle
         component={NavLink}
         to="/register"
-        variant="contained"
-        size="medium"
         startIcon={<AppRegistrationIcon />}
       >
         Register
-      </Button>
+      </ButtonStyle>
 
-      <Button
-        component={NavLink}
-        to="/login"
-        variant="contained"
-        size="medium"
-        startIcon={<LoginIcon />}
-      >
+      <ButtonStyle component={NavLink} to="/login" startIcon={<LoginIcon />}>
         Log In
-      </Button>
+      </ButtonStyle>
     </Box>
   );
 };

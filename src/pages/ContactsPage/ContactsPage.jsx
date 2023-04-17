@@ -25,9 +25,9 @@ export const ContactsPage = () => {
           gap: '20px',
           mx: 'auto',
           borderRadius: 4,
-          boxShadow: 3,
           minWidth: 500,
           backgroundColor: '#f6f8f9',
+          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
         }}
       >
         <Typography component="h2" variant="h5">
@@ -45,9 +45,9 @@ export const ContactsPage = () => {
             gap: '20px',
             mx: 'auto',
             borderRadius: 4,
-            boxShadow: 3,
             minWidth: 500,
             backgroundColor: '#f6f8f9',
+            boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
           }}
         >
           <Typography component="h2" variant="h5" sx={{ textAlign: 'center' }}>
